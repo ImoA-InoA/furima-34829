@@ -6,7 +6,7 @@
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
 | email              | string | null: false |
-| encrypted_password |        | null: false |
+| encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
 | last_name_kana     | string | null: false |
@@ -24,11 +24,11 @@
 | --------------- | ------------- | ----------- |
 | product_name    | string        | null: false |
 | description     | text          | null: false |
-| category        |               | null: false |
-| status          |               | null: false |
-| burden          |               | null: false |
-| area            |               | null: false |
-| days            |               | null: false |
+| category        | integer_id    | null: false |
+| status          | integer_id    | null: false |
+| burden          | integer_id    | null: false |
+| area            | integer_id    | null: false |
+| days            | integer_id    | null: false |
 | price           | integer       | null: false |
 
 ### Association
@@ -52,4 +52,9 @@
 
 | Column           | Type          | Options     |
 | ---------------- | ------------- | ----------- |
-| shipping_address |               | null: false |
+| postal_code      | integer       | null: false |
+| prefectures      | string        | null: false |
+| municipality     | string        | null: false |
+| address          | string        | null: false |
+| building         | string        | null: false |
+| phone_number     | integer       | null: false |
