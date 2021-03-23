@@ -15,8 +15,8 @@
 
 ### Association
 
-- has_many :items, foreign_key: true
-- has_many :product_purchase, foreign_key: true
+- has_many :items
+- has_many :product_purchase
 
 ## items テーブル
 
@@ -33,20 +33,20 @@
 
 ### Association
 
-- belongs_to :users
-- has_one    :product_purchase, foreign_key: true
+- belongs_to :user
+- has_one    :product_purchase
 
 ## product_purchase テーブル
 
 | Column           | Type          | Options                        |
 | ---------------- | ------------- | ------------------------------ |
-| user_name        |               | null: false, foreign_key: true |
-| user_item        |               | null: false, foreign_key: true |
+| item_id          |               | null: false, foreign_key: true |
+| user_id          |               | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 ## shipping_add テーブル
 
