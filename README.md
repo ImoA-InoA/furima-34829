@@ -2,43 +2,66 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| name     | string | null: false |
-| birthday | string | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
 - has_many :items
-- has_one  :product_purchase
+- has_many :product_purchases
 
 ## items テーブル
 
-| Column          | Type          | Options     |
-| --------------- | ------------- | ----------- |
-| image           | ActiveStorage |             |
-| product_name    | string        | null: false |
-| description     | text          | null: false |
-| delivery        | text          | null: false |
-| price           |               | null: false |
+| Column          | Type          | Options           |
+| --------------- | ------------- | ----------------- |
+| product_name    | string        | null: false       |
+| description     | text          | null: false       |
+| category_id     | integer       | null: false       |
+| status_id       | integer       | null: false       |
+| burden_id       | integer       | null: false       |
+| area_id         | integer       | null: false       |
+| delivery_id     | integer       | null: false       |
+| price           | integer       | null: false       |
+| user            | references    | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one    :product_purchase
 
 ## product_purchase テーブル
 
-| Column           | Type          | Options     |
-| ---------------- | ------------- | ----------- |
-| purchase_details |               |             |
-| credit_card      |               | null: false |
-| shipping_add     |               | null: false |
+| Column           | Type          | Options                        |
+| ---------------- | ------------- | ------------------------------ |
+| item             | references    | null: false, foreign_key: true |
+| user             | references    | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
+- has_one    :shipping_add
+
+## shipping_add テーブル
+
+| Column           | Type          | Options           |
+| ---------------- | ------------- | ----------------- |
+| postal_code      | string        | null: false       |
+| area_id          | integer       | null: false       |
+| municipality     | string        | null: false       |
+| address          | string        | null: false       |
+| building         | string        |                   |
+| phone_number     | string        | null: false       |
+| product_purchase | references    | foreign_key: true |
+
+### Association
+
+- belongs_to :product_purchase
