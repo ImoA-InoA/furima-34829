@@ -18,4 +18,5 @@ class Item < ApplicationRecord
   belongs_to :burden
   belongs_to :area
   belongs_to :delivery
+  belongs_to :user
 end
