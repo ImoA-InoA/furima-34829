@@ -4,13 +4,12 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :product_name
     validates :description
-    validates :category_id
-    validates :status_id 
-    validates :burden_id
-    validates :area_id
-    validates :delivery_id
-    validates :price
-    validates :user
+    validates :category_id, numericality: { other_than: 1 }
+    validates :status_id, numericality: { other_than: 1 }
+    validates :burden_id, numericality: { other_than: 1 }
+    validates :area_id, numericality: { other_than: 1 }
+    validates :delivery_id, numericality: { other_than: 1 }
+    validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 10000000, message: "is invalid"}
   end
   has_one_attached :image
   belongs_to :category
