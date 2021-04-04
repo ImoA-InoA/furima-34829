@@ -18,6 +18,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  # def edit
+    # @item = Item.find(params[:id])
+  # end
+
+  # def destroy
+    # @item = Item.find(params[:id])
+    # @item.destroy
+    # redirect_to @item
+  # end
+
   private
   def item_params
     params.require(:item).permit(:product_name, :description, :category_id, :status_id, :burden_id,
