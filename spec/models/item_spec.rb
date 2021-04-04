@@ -69,8 +69,8 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Area is not a number")
       end
 
-      it 'area_idが1では登録できないこと' do
-        @item.area_id = 1
+      it 'area_idが0では登録できないこと' do
+        @item.area_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
