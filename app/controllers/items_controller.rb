@@ -26,11 +26,11 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:id])
   # end
 
-  # def destroy
-    # @item = Item.find(params[:id])
-    # @item.destroy
-    # redirect_to @item
-  # end
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to @item
+  end
 
   private
   def item_params
