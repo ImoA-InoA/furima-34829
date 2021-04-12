@@ -11,4 +11,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :items
+  has_many :product_purchases
 end
