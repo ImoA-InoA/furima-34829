@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: :index
-  before_action :set_item, only: [:index, :create]
+  before_action :authenticate_user!, except: [:index ]
+  before_action :set_item, only: [:index, :create, :edit]
   
   def index
     @order_product_purchase = OrderProductPurchase.new
@@ -18,7 +18,9 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    
+    unless current_user == @item.user && !@item.product_purchase.present?
+      redirect_to root_path
+    end
   end
 
   private

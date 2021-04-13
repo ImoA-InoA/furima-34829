@@ -62,7 +62,7 @@ RSpec.describe Order, type: :model do
     end
 
     it "電話番号が12桁以上では登録できないこと" do
-      @order.phone_number = 1234567891234
+      @order.phone_number = '1234567891234'
       @order.valid?
       expect(@order.errors.full_messages).to include("Phone number is invalid")
     end
