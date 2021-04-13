@@ -50,7 +50,7 @@
 - belongs_to :item
 - has_one    :shipping_add
 
-## shipping_add テーブル
+## shipping_add(orders?) テーブル
 
 | Column           | Type          | Options           |
 | ---------------- | ------------- | ----------------- |

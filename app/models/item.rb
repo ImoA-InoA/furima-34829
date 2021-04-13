@@ -21,4 +21,5 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :delivery
   belongs_to :user
+  has_one    :product_purchase
 end
