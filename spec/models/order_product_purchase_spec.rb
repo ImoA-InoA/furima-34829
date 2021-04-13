@@ -9,7 +9,11 @@ RSpec.describe Order, type: :model do
   end
 
   context '内容に問題ない場合' do
-    
+
+    it "すべての情報があれば登録できる" do
+      expect(@order).to be_valid
+    end
+
     it "建物名が空でも登録できる" do
       @order.building = ''
       @order.valid?
@@ -28,6 +32,12 @@ RSpec.describe Order, type: :model do
       @order.postal_code = '1234567'
       @order.valid?
       expect(@order.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+    end
+
+    it "area_idが空では登録できないこと" do
+      @order.area_id = 0
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Area must be other than 0")
     end
 
 
