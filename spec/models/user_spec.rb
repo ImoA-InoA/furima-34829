@@ -123,6 +123,7 @@ RSpec.describe User, type: :model do
       it 'passwordは英語のみでは登録できないこと' do
         @user.password = 'abcdefg'
         @user.valid?
+        binding.pry
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
